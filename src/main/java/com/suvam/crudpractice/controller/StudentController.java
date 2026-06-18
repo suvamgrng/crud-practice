@@ -40,4 +40,13 @@ public class StudentController {
         }
         return ResponseEntity.ok(updated);
     }
+
+    @DeleteMapping("/students/{id}")
+    public ResponseEntity<Student> deleteStudent(@PathVariable long id) {
+        Student deleted = service.deleteStudent(id);
+        if (deleted == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(deleted);
+    }
 }

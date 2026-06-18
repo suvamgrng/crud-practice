@@ -27,7 +27,7 @@ public class StudentService {
                     "amisha123@gmail.com"
             ),
             new Student(
-                    1,
+                    3,
                     "Samir Gurung",
                     18,
                     "samir123@gmail.com"
@@ -44,6 +44,15 @@ public class StudentService {
                 student.setId(id);
                 students.set(i, student);
                 return student;
+            }
+        }
+        return null;
+    }
+
+    public Student deleteStudent(long id) {
+        for (int i = 0; i < students.size(); i++) {
+            if (students.get(i).getId() == id) {
+                return students.remove(i);
             }
         }
         return null;
