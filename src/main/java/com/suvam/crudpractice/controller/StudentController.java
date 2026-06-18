@@ -27,9 +27,17 @@ public class StudentController {
         if (student == null) {
             return ResponseEntity.badRequest().build();
         }
-        service.addStudents(student);
+        service.addStudent(student);
         return ResponseEntity.status(201).body(student);
     }
 
-
+    @PutMapping("/students/{id}")
+    public ResponseEntity<Student> updateStudent(@PathVariable long id,
+                                                 @RequestBody Student student) {
+        Student updated = service.updateStudent(id, student);
+        if (updated == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(updated);
+    }
 }

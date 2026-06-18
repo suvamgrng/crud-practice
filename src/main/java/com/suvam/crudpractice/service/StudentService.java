@@ -34,8 +34,18 @@ public class StudentService {
             )
     ));
 
-    public void addStudents(Student student) {
+    public void addStudent(Student student) {
         students.add(student);
     }
 
+    public Student updateStudent(long id, Student student) {
+        for (int i = 0; i < students.size(); i++) {
+            if (students.get(i).getId() == id) {
+                student.setId(id);
+                students.set(i, student);
+                return student;
+            }
+        }
+        return null;
+    }
 }
