@@ -1,0 +1,35 @@
+package com.suvam.crudpractice.controller;
+
+import com.suvam.crudpractice.model.Student;
+import com.suvam.crudpractice.service.StudentService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api")
+public class StudentController {
+    private StudentService service;
+
+    public StudentController(StudentService service) {
+        this.service = service;
+    }
+
+    @GetMapping("/students")
+    public ResponseEntity<List<Student>> getAllStudents() {
+        return ResponseEntity.ok(service.getStudents());
+    }
+
+
+    @PostMapping("/students")
+    public ResponseEntity<Student> addStudent(@RequestBody Student student) {
+        if (student == null) {
+            return ResponseEntity.badRequest().build();
+        }
+        service.addStudents(student);
+        return ResponseEntity.status(201).body(student);
+    }
+
+
+}
