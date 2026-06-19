@@ -20,8 +20,8 @@ public class StudentService {
         return repo.findAll();
     }
 
-    public void addStudent(Student student) {
-        repo.save(student);
+    public void addStudent(List<Student> student) {
+        repo.saveAll(student);
     }
 
     public Student updateStudent(long id, Student student) {

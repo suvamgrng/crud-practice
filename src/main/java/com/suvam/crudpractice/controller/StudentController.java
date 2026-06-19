@@ -23,7 +23,7 @@ public class StudentController {
 
 
     @PostMapping("/students")
-    public ResponseEntity<Student> addStudent(@RequestBody Student student) {
+    public ResponseEntity<List<Student>> addStudent(@RequestBody List<Student> student) {
         if (student == null) {
             return ResponseEntity.badRequest().build();
         }
