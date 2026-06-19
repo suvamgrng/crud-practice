@@ -12,6 +12,10 @@ public class StudentService {
 
     StudentRepo repo;
 
+    public StudentService(StudentRepo repo) {
+        this.repo = repo;
+    }
+
     public List<Student> getStudents() {
         return repo.findAll();
     }
